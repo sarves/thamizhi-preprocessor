@@ -1,37 +1,9 @@
-## Welcome to GitHub Pages
+## Thamizhi-Validator
 
-You can use the [editor on GitHub](https://github.com/sarves/thamizhi/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This has a set of functions written in python using which you can validate whether a word is a Tamil word according  to a Tamil classical grammar text called Nannool. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Basically it will check whether the given word has a proper starting letter, ending letter and adjacent letters. You can also check whether give word is a correct one letter word in Tamil.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sarves/thamizhi/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Further, this also has the following two function that can be used for pre-processing:
+- Sandhi remover
+- Unicode Unicode Normalizer
