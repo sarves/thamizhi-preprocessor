@@ -1,8 +1,14 @@
-#Developed by Kengatharaiyer Sarveswaran
-#sarves@cse.mrt.ac.lk or iamsarves@gmail.com
-#Department of Computer Science and Engineering, University of Moratuwa, Sri Lanka
-#Licensed under GPLv3 which is outlined here https://www.gnu.org/licenses/gpl-3.0.en.html
-#Version 20190206
+###############################################
+#Author: K. Sarveswaran, iamsarves@gmail.com
+#License: GPL3
+#This script has the following functionalities
+#check whether a word has valid adjecent characters
+#check whether it starts with and end with a valid letter
+#check weather a given word is a one letter word
+#Removing Sandi and normalising (Unicode) are also part of this script, but this will be soon moved to another script.
+#Version 0.9-31-08-2019
+#Numbers points to the formula in Nanool. Everything here are written based on Nanool
+##############################################
 
 import re
 import os
@@ -129,7 +135,7 @@ def CheckMeimmayakkam(word):
     set36=["ழ்ழ்"]
 
     letters=set1
-    letters[len(letters):]=set2  #Lists are merged separatly purposly
+    letters[len(letters):]=set2  #Lists are merged one by one purposely
     letters[len(letters):]=set3
     letters[len(letters):]=set4
     letters[len(letters):]=set5
@@ -192,16 +198,14 @@ def TamilNormalizer(word) :
 	return word
 
 def SandhiRemover(word) :
-	word=word.strip() #this is to strip off extra while spaces
-	#print (word)
-	sandhi_letters={'க்','த்','ப்','ச்'} 
-	for x in sandhi_letters: #if it is not oreluthu orumozhi
-            		p=re.compile(x+"$")
-            		if p.search(word):
-                	   word=word[:-2] #remove last two letters / code points
-	return word
-
-
+    word=word.strip() #this is to strip off extra while spaces
+    #print (word)
+    sandhi_letters={'க்','த்','ப்','ச்'} 
+    for x in sandhi_letters: #if it is not oreluthu orumozhi
+        p=re.compile(x+"$")
+        if p.search(word):
+            word=word[:-2] #remove last two letters / code points
+    return word
 def ValidateTamilWord(word):
 	if CheckOreluthuOrumozhi(word)==1:
 		return "A valid Oreluthu orumozhi"
@@ -213,13 +217,16 @@ def ValidateTamilWord(word):
 				else :
 					return "Invalid Meimmayakkam"
 			else:
-				return "Invalid ending letter"
+				return "invalid ending letter"
 		else :
-			return "Invalid starting letter"
+			return "invalid starting letter"
 
+
+outt = ValidateTamilWord("கஙதஙவு")
+print(outt)
 
 
 #Todo:
-#doesnt valid two letter words like தௌ
+#doesnt validate two letter words like தௌ
 
 
