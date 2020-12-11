@@ -6,13 +6,16 @@
 #check whether it starts with and end with a valid letter
 #check weather a given word is a one letter word
 #Removing Sandi and normalising (Unicode) are also part of this script, but this will be soon moved to another script.
-#Version 0.9-31-08-2019
+#Version 2020.12.10
 #Numbers points to the formula in Nanool. Everything here are written based on Nanool
 ##############################################
 
+
+#Todo- Letter names, ரகரம்  etc should be added to the valid list
+
 import re
 import os
-import subprocess
+import subprocess,sys
 
 #Possible starting letter check
 def CheckStartingLetter(word):
@@ -206,9 +209,10 @@ def SandhiRemover(word) :
         if p.search(word):
             word=word[:-2] #remove last two letters / code points
     return word
+
 def ValidateTamilWord(word):
 	if CheckOreluthuOrumozhi(word)==1:
-		return "A valid Oreluthu orumozhi"
+		return 2 #"A valid Oreluthu orumozhi"
 	else:
 		if CheckStartingLetter(word)==1:
 			if CheckEndingLetter(word)==1:
@@ -217,16 +221,18 @@ def ValidateTamilWord(word):
 				else :
 					return "Invalid Meimmayakkam"
 			else:
-				return "invalid ending letter"
+				return "Invalid ending letter"
 		else :
-			return "invalid starting letter"
+			return "Invalid starting letter"
 
 
-outt = ValidateTamilWord("கஙதஙவு")
-print(outt)
-
-
-#Todo:
-#doesnt validate two letter words like தௌ
-
-
+if (len(sys.argv)-1)==0:
+    print("Command format should be: thamizhi-preprocessor.py word-to-be-validated")
+else:
+    output=ValidateTamilWord(str(sys.argv[1]))
+    if output ==1:
+        print("Valid word")
+    elif output==2:
+        print("Orelutu orumozhi")
+    else:
+        print(output)
