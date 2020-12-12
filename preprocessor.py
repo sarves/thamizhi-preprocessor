@@ -226,13 +226,35 @@ def ValidateTamilWord(word):
 			return "Invalid starting letter"
 
 
-if (len(sys.argv)-1)==0:
-    print("Command format should be: thamizhi-preprocessor.py word-to-be-validated")
+if (len(sys.argv)-1)<2:
+    print("**************************\n\
+Command format should be: \n\
+thamizhi-preprocessor.py -validate word-to-be-validated\n\
+or\
+thamizhi-preprocessor.py -normalise file-name")
 else:
-    output=ValidateTamilWord(str(sys.argv[1]))
-    if output ==1:
-        print("Valid word")
-    elif output==2:
-        print("Orelutu orumozhi")
+    option = str(sys.argv[1])
+    if option == "-validate":
+        output=ValidateTamilWord(str(sys.argv[2]))
+        if output ==1:
+            print("Valid word")
+        elif output==2:
+            print("Orelutu orumozhi")
+        else:
+            print(output)
+    elif option == "-normalise":
+        
+        #input file
+        fin = open(str(sys.argv[2]), "rt")
+        #output file to write the result to
+        fout = open("normalised-"+str(sys.argv[2]), "wt")
+        #for each line in the input file
+        for line in fin:
+            new_line=TamilNormalizer(line)
+            fout.write(new_line)
+        #close input and output files
+        fin.close()
+        fout.close()
     else:
-        print(output)
+        print("Invalid switch, you can use either -validate or -normalise")
+        
