@@ -30,8 +30,4 @@ python3.8 thamizhi-preprocessor.py -normalise sample-text
 ```
 This will create a new normalised file: normalised-sample-text
 
-## Acknowledgment
-
-This research was supported by the Accelerating Higher Education Expansion and Development (AHEAD) Operation of the Ministry of Higher Education, Sri Lanka funded by the World Bank.
-
 *How can I improve this, write to me please!*
